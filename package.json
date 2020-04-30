@@ -3,16 +3,23 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "dependencies": {
+    "discord.js": "^12.2.0",
+    "weather-js": "^2.0.0"
+  },
+  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node ./index.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hitnrun76/Saka-s-BOT.git"
+  },
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "args": "^5.0.0",
-    "discord.js": "^11.6.4",
-    "weather-js": "^2.0.0",
-    "weather.js": "^0.1.0"
-  }
+  "bugs": {
+    "url": "https://github.com/hitnrun76/Saka-s-BOT/issues"
+  },
+  "homepage": "https://github.com/hitnrun76/Saka-s-BOT#readme"
 }
