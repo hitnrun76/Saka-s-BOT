@@ -1,2 +1,2 @@
-npm install discord.js
-npm install weather-js
+npm install discord.js --save
+npm install weather-js --save
