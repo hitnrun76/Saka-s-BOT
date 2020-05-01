@@ -13,7 +13,7 @@ function getRandomInt(max) {
 //////////////////////////////////////////////////////// INDICATEUR CONSOLE
 bot.on('ready', function () {
     console.log("Je suis connecté !")
-    bot.user.setAvatar('./baniereTwitch.jpg')
+    bot.user.setAvatar('./edward.jpg')
     .then(() => console.log('Avatar mis en place avec succès.'))
   })
 ////////////////////////////////////////////////////////////////
@@ -127,6 +127,10 @@ bot.on('message', msg => {
     
   }
 });
+
+//////////////////////////////////////////////////////
+
+
 
 
 bot.login(process.env.TOKEN)
