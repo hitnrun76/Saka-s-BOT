@@ -143,8 +143,8 @@ bot.on('message', msg => {
       const embed = new Discord.MessageEmbed()
       .setDescription("Taches à faire :")
       .setColor(0X00AE86)
-      taskArray.forEach(element => {
-        embed.addField(element);
+      taskArray.forEach(element,index => {
+        embed.addField("#"+index,element);
       });
       msg.channel.send({embed});
     }
@@ -161,8 +161,8 @@ bot.on('message', msg => {
       msg.channel.send("**Tu doit donner un nom à la tache.**");
     }
     else{
-      console.log(args,"#################",args[0]);
-      taskArray.push(args[0]);
+      
+      taskArray.push(args.join(' '));
     }
   }
 
@@ -175,7 +175,11 @@ bot.on('message', msg => {
       msg.channel.send("**Tu doit donner le nom de la tache à supprimer.**");
     }
     else{
-      taskArray.splice(taskArray.indexOf(args[0]));
+      try {
+        taskArray.splice(taskArray.indexOf(args.join(' ')));
+      } catch (error) {
+        msg.channel.send(error);
+      }
     }
   }
 });
