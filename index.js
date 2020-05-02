@@ -136,7 +136,6 @@ bot.on('message', msg => {
 
 let taskArray = [];
 
-var Tabpunch = ["T’as pas léché un téton depuis que ta mère a stoppé de te donner le sein.","Ton visage n’est pas très joli à voir, pour toi, le port de la burqa devrait être obligatoire.","Avec tous les boutons que t’as, mon BlackBerry est jaloux.","T’es tellement fragile que si tu fais un tacle à Gourcuff, c’est toi qui te casses la jambe.","Le FBI se sert de ta mere comme une base de donnée ADN, vu qu’elle a coffré plus de foutre que les banques de sperme européennes.","Il a fallu que ta meuf te trompe pour qu’elle ait autre chose que le missionnaire.","Ta bouche c’est comme ta braguette, ta mère aurait dû t’apprendre à la fermer en public.","T’as été conçu pour un être branleur : youporn to be alive.","ta mere c'est comme un barbec on compte plus le nombre de saucisses qui y sont passées","T'es tellement con que tu crois que des archipelle ça creuse des architrous !","T'es tellement con que t'as réussi à raté un sondage.","T'es tellement con que t'as déjà essayer de noyer un poisson.","Si ta laideur était une brique, tu serais la Grande Muraille de Chine.","..."];
 bot.on('message', msg => {
   if (msg.content.startsWith('task')) {
     if(taskArray.length != 0){
@@ -155,5 +154,17 @@ bot.on('message', msg => {
   }
 });
 
+bot.on('message', msg => {
+  if (msg.content.startsWith('addtask')) {
+    let args = msg.content.split(" ").slice(1);
+    if(args[0] === 0 || args[0] === undefined){
+      msg.channel.send("**Tu doit donner un nom à la tache.**");
+    }
+    else{
+      taskArray.push(args[0]);
+    }
+  }
+
+});
 //////////////////////////////////////////////////////
 bot.login(process.env.TOKEN)
