@@ -58,9 +58,9 @@ bot.on('message', msg => {
   if (msg.content.startsWith('clear')) {
     let args = msg.content.split(" ").slice(1);
 
-    if (isNaN(args[0])) return msg.channel.send('** Veuillez rentrer un nombre valide de messages**').then(msg => msg.delete(3000)).catch(e => msg.send('erreur'));
-    if (args[0] > 100) return msg.channel.send('** Le nombre de message a supprimer doit etre inférieur à 100 **').then(msg => msg.delete(3000)).catch(e => msg.send('erreur'));
-    return msg.channel.bulkDelete(args[0]).then(msg.channel.send('** Messages supprimés **')).then(msg => msg.delete(3000).catch(e => msg.send('erreur')));
+    if (isNaN(args[0])) return msg.channel.send('** Veuillez rentrer un nombre valide de messages**').then(msg => msg.delete(3000)).catch(e => msg.channel.send('erreur'));
+    if (args[0] > 100) return msg.channel.send('** Le nombre de message a supprimer doit etre inférieur à 100 **').then(msg => msg.delete(3000)).catch(e => msg.channel.send('erreur'));
+    return msg.channel.bulkDelete(args[0]).then(msg.channel.send('** Messages supprimés **')).then(msg => msg.delete(3000).catch(e => msg.channel.send('erreur')));
   }
 });
 //////////////////////////////////////////////////////
