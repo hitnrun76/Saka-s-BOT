@@ -143,9 +143,10 @@ bot.on('message', msg => {
       const embed = new Discord.MessageEmbed()
       .setDescription("Taches à faire :")
       .setColor(0X00AE86)
-      taskArray.forEach(element,index => {
+      for (let index = 0; index < taskArray.length; index++) {
+        const element = taskArray[index];
         embed.addField("#"+index,element);
-      });
+      }
       msg.channel.send({embed});
     }
     else{
