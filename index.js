@@ -14,7 +14,8 @@ function getRandomInt(max) {
 bot.on('ready', function () {
     console.log("Je suis connecté !")
     bot.user.setAvatar('./edward.jpg')
-    .then(() => console.log('Avatar mis en place avec succès.'))
+    .then(() => console.log('Avatar mis en place avec succès.')
+    )
   })
 ////////////////////////////////////////////////////////////////
 
@@ -57,12 +58,11 @@ bot.on('message', msg => {
   if (msg.content.startsWith('clear')) {
     let args = msg.content.split(" ").slice(1);
 
-    if (isNaN(args[0])) return msg.channel.send('** Veuillez rentrer un nombre valide de messages**');
-    if (args[0] > 100) return msg.channel.send('** Le nombre de message a supprimer doit etre inférieur à 100 **');
+    if (isNaN(args[0])) return msg.channel.send('** Veuillez rentrer un nombre valide de messages**').then(msg => msg.delete(3000));
+    if (args[0] > 100) return msg.channel.send('** Le nombre de message a supprimer doit etre inférieur à 100 **').then(msg => msg.delete(3000));
 
-    msg.channel.bulkDelete(args[0])
-      .then(msg.channel.send('** Messages supprimés **').then(msg => msg.delete(3000)))
-        .catch( error => msg.channel.send('erreur'))
+    return msg.channel.bulkDelete(args[0])
+    return msg.channel.send('** Messages supprimés **').then(msg => msg.delete(3000))
   }
 });
 //////////////////////////////////////////////////////
@@ -95,7 +95,7 @@ bot.on('message', msg => {
       return;
     }
 
-    const embed = new Discord.RichEmbed()
+    const embed = new Discord.MessageEmbed()
       .setDescription(`**${current.skytext}**`)
       .setAuthor(`Meteo pour ${current.observationpoint}`)
       .setThumbnail(current.imageUrl)
@@ -129,7 +129,6 @@ bot.on('message', msg => {
 });
 
 //////////////////////////////////////////////////////
-
 
 
 
