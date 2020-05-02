@@ -144,12 +144,12 @@ bot.on('message', msg => {
       .setDescription("Taches à faire :")
       .setColor(0X00AE86)
       taskArray.forEach(element => {
-        embed.addField(element,true);
+        embed.addField(element);
       });
       msg.channel.send({embed});
     }
     else{
-      return msg.channel.send("Il n'y a pas de taches pour le moment");
+      return msg.channel.send("**Il n'y a pas de taches pour le moment**");
     }
   }
 });
@@ -161,10 +161,23 @@ bot.on('message', msg => {
       msg.channel.send("**Tu doit donner un nom à la tache.**");
     }
     else{
+      console.log(args,"#################",args[0]);
       taskArray.push(args[0]);
     }
   }
 
+});
+
+bot.on('message', msg => {
+  if (msg.content.startsWith('deltask')) {
+    let args = msg.content.split(" ").slice(1);
+    if(args[0] === 0 || args[0] === undefined){
+      msg.channel.send("**Tu doit donner le nom de la tache à supprimer.**");
+    }
+    else{
+      taskArray.splice(taskArray.indexOf(args[0]));
+    }
+  }
 });
 //////////////////////////////////////////////////////
 bot.login(process.env.TOKEN)
