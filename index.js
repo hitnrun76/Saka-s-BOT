@@ -141,7 +141,7 @@ bot.on('message', msg => {
     if(taskArray.length != 0){
       //todo afficher taches
       const embed = new Discord.MessageEmbed()
-      .setDescription("Taches à faire :")
+      .setDescription("**Taches à faire :**")
       .setColor(0X00AE86)
       for (let index = 0; index < taskArray.length; index++) {
         const element = taskArray[index];
@@ -163,7 +163,7 @@ bot.on('message', msg => {
     }
     else{
       
-      taskArray.push(args.join(' '));
+      taskArray.push(args.join(' ')).then(msg.channel.send("**Tache Ajoutée**"));
     }
   }
 
@@ -177,9 +177,9 @@ bot.on('message', msg => {
     }
     else{
       try {
-        taskArray.splice(taskArray.indexOf(args.join(' ')));
+        taskArray.splice(taskArray.indexOf(args.join(' '))).then(msg.channel.send("**Tache Supprimée**"));
       } catch (error) {
-        msg.channel.send(error);
+        msg.channel.send("**La tache ne doit pas exister**");
       }
     }
   }
