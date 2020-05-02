@@ -12,10 +12,9 @@ function getRandomInt(max) {
 
 //////////////////////////////////////////////////////// INDICATEUR CONSOLE
 bot.on('ready', function () {
-    console.log("Je suis connecté !")
+    console.log("Je suis connecté !");
     bot.user.setAvatar('./edward.jpg')
-    .then(() => console.log('Avatar mis en place avec succès.')
-    )
+    .then(() => console.log('Avatar mis en place avec succès.'));
   })
 ////////////////////////////////////////////////////////////////
 
@@ -34,7 +33,7 @@ bot.on('message', msg => {
     let args = msg.content.split(" ").slice(1);
     
     if(args[0] == null){
-      msg.channel.send('** Veuillez entrer pile ou face ! **')
+      msg.channel.send('** Veuillez entrer pile ou face ! **');
     }
     else{
       var tab = ["Pile","Face"];
@@ -42,10 +41,10 @@ bot.on('message', msg => {
       var random = tab[rep];
 
       if(random.toUpperCase() == args[0].toUpperCase()){
-        msg.reply(random +" ** Bravo beau gosse ta gagné ! **")
+        msg.reply(random +" ** Bravo beau gosse ta gagné ! **");
       }
       else{
-        msg.reply(random +" ** Tu pu la merde gamin... **")
+        msg.reply(random +" ** Tu pu la merde gamin... **");
       }
     }
   }
@@ -65,7 +64,7 @@ bot.on('message', msg => {
       return msg.channel.send('** Le nombre de message a supprimer doit etre inférieur à 100 **').then(msg => msg.delete({timeout: 3000}));
     }
     if(!isNaN(args[0]) && args[0] < 100){
-      msg.channel.bulkDelete(args[0])
+      msg.channel.bulkDelete(args[0]);
       return msg.channel.send('** Messages supprimés **').then(msg => msg.delete({timeout: 3000}));
     } 
   }
@@ -96,7 +95,7 @@ bot.on('message', msg => {
     
     if(result.length === 0 || result.length === undefined)
     {
-      msg.channel.send('** Veuillez entrer un nom de ville valide. **')
+      msg.channel.send('** Veuillez entrer un nom de ville valide. **');
       return;
     }
 
@@ -135,6 +134,26 @@ bot.on('message', msg => {
 
 //////////////////////////////////////////////////////
 
+let taskArray = [];
 
+var Tabpunch = ["T’as pas léché un téton depuis que ta mère a stoppé de te donner le sein.","Ton visage n’est pas très joli à voir, pour toi, le port de la burqa devrait être obligatoire.","Avec tous les boutons que t’as, mon BlackBerry est jaloux.","T’es tellement fragile que si tu fais un tacle à Gourcuff, c’est toi qui te casses la jambe.","Le FBI se sert de ta mere comme une base de donnée ADN, vu qu’elle a coffré plus de foutre que les banques de sperme européennes.","Il a fallu que ta meuf te trompe pour qu’elle ait autre chose que le missionnaire.","Ta bouche c’est comme ta braguette, ta mère aurait dû t’apprendre à la fermer en public.","T’as été conçu pour un être branleur : youporn to be alive.","ta mere c'est comme un barbec on compte plus le nombre de saucisses qui y sont passées","T'es tellement con que tu crois que des archipelle ça creuse des architrous !","T'es tellement con que t'as réussi à raté un sondage.","T'es tellement con que t'as déjà essayer de noyer un poisson.","Si ta laideur était une brique, tu serais la Grande Muraille de Chine.","..."];
+bot.on('message', msg => {
+  if (msg.content.startsWith('task').toUpperCase()) {
+    if(taskArray.length() != 0){
+      //todo afficher taches
+      const embed = new Discord.MessageEmbed()
+      .setDescription("Taches à faire :")
+      .setColor(0X00AE86)
+      taskArray.forEach(element => {
+        embed.addField(element,true);
+      });
+      msg.channel.send({embed});
+    }
+    else{
+      return msg.channel.send("Il n'y a pas de taches pour le moment");
+    }
+  }
+});
 
+//////////////////////////////////////////////////////
 bot.login(process.env.TOKEN)
