@@ -65,8 +65,8 @@ bot.on('message', msg => {
       return msg.channel.send('** Le nombre de message a supprimer doit etre inférieur à 100 **').then(msg => msg.delete({timeout: 3000}));
     }
     if(!isNaN(args[0]) && args[0] < 100){
-      msg.channel.bulkDelete(args[0]).then(msg.channel.send('** Messages supprimés **'))
-      return msg => msg.delete({timeout: 3000});
+      msg.channel.bulkDelete(args[0])
+      return msg.channel.send('** Messages supprimés **').then(msg => msg.delete({timeout: 3000}));
     } 
   }
 });
